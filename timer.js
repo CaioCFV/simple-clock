@@ -17,23 +17,19 @@
     };
 
     function calcHoursToRotate(date){
+        console.log()
         if(date.getHours() > 12){
-            return (((HOUR_ROTATE_EQUIVALENT * (date.getHours() - 12)) - (HOUR_ROTATE_EQUIVALENT - date.getMinutes())));
+            return ((HOUR_ROTATE_EQUIVALENT * (date.getHours() - 12)) / 2) + INITIAL_POINTER_ROTATE + ((date.getMinutes())/2);
         }else{
-            return (((HOUR_ROTATE_EQUIVALENT * date.getHours()) - (HOUR_ROTATE_EQUIVALENT - date.getMinutes())) / 2) + INITIAL_POINTER_ROTATE;
+            return ((HOUR_ROTATE_EQUIVALENT * (date.getHours())) / 2) + INITIAL_POINTER_ROTATE + ((date.getMinutes())/ 2);
         }
     };
 
     setInterval(()=>{
         const now = new Date();
         pointerHourElement.style.transform   = `translate(-50%, -50%) rotate(${calcHoursToRotate(now)}deg)`;
-    //    pointerMinuteElement.style.transform = `translate(-50%, -50%) rotate(${calcMinutesToRotate(now)}deg)`;
-    //    pointerSecondElement.style.transform = `translate(-50%, -50%) rotate(${calcSecondsToRotate(now)}deg)`;
+        pointerMinuteElement.style.transform = `translate(-50%, -50%) rotate(${calcMinutesToRotate(now)}deg)`;
+        pointerSecondElement.style.transform = `translate(-50%, -50%) rotate(${calcSecondsToRotate(now)}deg)`;
     },1000);
 
 })();
-// 5 * 60 = 300
-// 285 / 2 = 190
-// 12 * 60 = 720
-// 720 - 20 = 700
-// 700 / 2 = 350

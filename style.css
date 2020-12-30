@@ -114,10 +114,7 @@ html {
 .hours .clock-6::before,
 .hours .clock-9::before,
 .hours .clock-12::before {
-    border-top: 53px solid #fff;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    transform: rotate(-44deg) translate(-6px, -4px);
+    border-top: 50px solid #000;
 }
 
 .clock-center {
